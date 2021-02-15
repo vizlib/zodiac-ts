@@ -355,7 +355,7 @@ exports.HoltWintersSmoothing = function(data, alpha, gamma, delta, seasonLength,
 		throw "seasonLength parameter must be a positive integer";
 	}
 
-	if(mult != true && mult != false)
+    if(mult != true && mult != false)
 	{
 		throw "mult parameter must be a boolean";
 	}
@@ -508,6 +508,7 @@ exports.HoltWintersSmoothing.prototype.optimizeParameters = function(iter)
 	this.gamma = bestGamma;
 	var bestDelta = 0.0;
 	this.delta = bestDelta;
+    var bestForecast = Array();
 
 	while(this.alpha < 1)
 	{
@@ -523,6 +524,7 @@ exports.HoltWintersSmoothing.prototype.optimizeParameters = function(iter)
 					bestGamma = this.gamma;
 					bestDelta = this.delta;
 					bestError = error;
+                    bestForecast = forecast
 				}
 				this.delta += incr;
 			}
@@ -536,7 +538,9 @@ exports.HoltWintersSmoothing.prototype.optimizeParameters = function(iter)
 	this.alpha = bestAlpha;
 	this.gamma = bestGamma;
 	this.delta = bestDelta;
-	return {"alpha":this.alpha, "gamma":this.gamma, "delta":this.delta};
+
+	// extended for own purpose
+	return {"alpha":this.alpha, "gamma":this.gamma, "delta":this.delta, "forecast": bestForecast, "mse": bestError};
 }
 
 /*Moving average */

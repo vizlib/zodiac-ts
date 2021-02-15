@@ -1,14 +1,14 @@
 {
-  "name": "zodiac-ts",
-  "version": "1.0.3",
-  "description": "time serie library",
+  "name": "@vizlib/zodiac-ts",
+  "version": "0.0.1",
+  "description": "Time serie library. Has been forked from zodiac-ts@1.0.3. Original author is Antoine Vastel",
   "main": "index.js",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/antoinevastel/zodiac.git"
+    "url": "https://github.com/vizlib/zodiac-ts.git"
   },
   "keywords": [
     "time",
